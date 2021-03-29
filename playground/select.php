@@ -20,6 +20,8 @@ $result = $myconn->query($strSQL);
             <td> ลำดับ</td>
             <td> ชื่อผู้ใช้</td>
             <td> สถานะ</td>
+            <td> แก้ไข</td>
+            <td> ลบ</td>
         </tr>
         <?php
         while ($row = $result->fetch_array()) {
@@ -29,6 +31,8 @@ $result = $myconn->query($strSQL);
                 <td><?php echo $row["id_user"] ?></td>
                 <td><?php echo $row["username"] ?></td>
                 <td><?php echo $row["status"] ?></td>
+                <td>edit</td>
+                <td>delete</td>
             </tr>
         <?php
         }
