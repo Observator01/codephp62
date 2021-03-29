@@ -32,7 +32,7 @@ $result = $myconn->query($strSQL);
                 <td><?php echo $row["username"] ?></td>
                 <td><?php echo $row["status"] ?></td>
                 <td>edit</td>
-                <td>delete</td>
+                <td><a href="delete.php?id=<?php echo $row["id_user"] ?>">delete</a></td>
             </tr>
         <?php
         }
