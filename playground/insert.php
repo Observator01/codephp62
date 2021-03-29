@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <form action="insert1.php" method="post">
+    <form action="insert.php" method="post">
         <table border="1">
             <tr>
                 <td>username</td>
