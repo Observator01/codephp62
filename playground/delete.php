@@ -8,9 +8,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $strSQL = "DELETE FROM user WHERE id_user=" . $id_user;
         $result = $myconn->query($strSQL);
         if ($result) {
-            echo "Add ID User Complete";
+            echo "Delete ID User Complete";
         } else {
-            echo "Add ID User Denied";
+            echo "Delete ID User Denied";
         }
     } else {
         echo "ID User is null";

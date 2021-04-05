@@ -15,22 +15,25 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 }
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $frmUsername = $frmPassword = "";
-    $frmUsername = $_POST["username"];
-    $frmPassword = $_POST["password_hash"];
-
-    if ($frmUsername && $frmPassword) {
-        $strSQL = "UPDATE user SET id_user=[value-1], username=[value-2], password_hash=[value-3], status=[value-4] WHERE id_user=".$id_user;
-
+    $username = $status = "";
+    $id_user = $_GET["id"];
+    $username = $_POST["username"];
+    $status = $_POST["status"];
+    $strSQL = "UPDATE user SET username='" .$username."', status=".$status." WHERE id_user=".$id_user;
+    if ($username == ""&& $status == "") {
+        echo "Update User Denied";
+    }else{
+        echo $strSQL;
         $result = $myconn->query($strSQL);
         if ($result) {
-            echo "Add User Complete";
+            echo "Update User Complete";
         } else {
-            echo "Add User Denied";
+            echo "Update User Denied";
         }
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,15 +45,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <form action="update.php" method="post">
+    <form action="update.php?id=<?=$id_user?>" method="post">
         <table border="1">
             <tr>
                 <td>Username</td>
-                <td><input type="text" name="username" id="username "value="<?=$username?>"></td>
+                <td><input type="text" name="username" value="<?=$username?>"></td>
             </tr>
             <tr>
                 <td>Status</td>
-                <td><input type="text" name="status" id="status" value="<?=$status?>"></td>
+                <td><input type="text" name="status"    value="<?=$status?>"></td>
             </tr>
             <tr>
                 <td colspan="2"><input type="submit" value="save"></td>
